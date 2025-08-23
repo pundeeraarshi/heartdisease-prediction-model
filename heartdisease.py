@@ -67,6 +67,6 @@ if ans == 0:
 else:
     st.warning('Heart Disease Detected')
 
-
+st.markdown('Designed by: **Aarshi Pundeer**')
 
 
