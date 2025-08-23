@@ -32,8 +32,13 @@ st.markdown(data)
 
 st.image('https://i0.wp.com/asianheartinstitute.org/wp-content/uploads/2024/11/Understanding-How-Heart-Disease-Impacts-Your-Body.jpg?fit=1572%2C917&ssl=1')
 
+st.subheader('Checking Error')
 with open('heart_disease_pred.pkl','rb') as f:
-    chatgpt = pickle.load(f)
+    try:
+        st.write('File Loading')
+        chatgpt = pickle.load(f)
+    except Exception as e:
+        st.write('File not found',e)
 
 # Load data
 url = '''https://github.com/ankitmisk/Heart_Disease_Prediction_ML_Model/blob/main/heart.csv?raw=true'''
