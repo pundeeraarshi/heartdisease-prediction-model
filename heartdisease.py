@@ -40,7 +40,7 @@ st.image('https://cdn.mos.cms.futurecdn.net/dMhEcS6kLzdgWmnYjkCCVT-970-80.jpg.we
 #    except Exception as e:
 #        st.write('File not found',e)
 
-# Load data
+ Load data
 url = '''https://github.com/ankitmisk/Heart_Disease_Prediction_ML_Model/blob/main/heart.csv?raw=true'''
 df = pd.read_csv(url)
 
