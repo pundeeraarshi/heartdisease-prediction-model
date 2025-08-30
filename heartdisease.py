@@ -32,13 +32,13 @@ st.markdown(data)
 
 st.image('https://cdn.mos.cms.futurecdn.net/dMhEcS6kLzdgWmnYjkCCVT-970-80.jpg.webp')
 
-st.subheader('Checking Error')
-with open('heart_disease_pred.pkl','rb') as f:
-    try:
-        st.write('File Loading')
-        chatgpt = pickle.load(f)
-    except Exception as e:
-        st.write('File not found',e)
+#st.subheader('Checking Error')
+#with open('heart_disease_pred.pkl','rb') as f:
+#   try:
+#        st.write('File Loading')
+#        chatgpt = pickle.load(f)
+#    except Exception as e:
+#        st.write('File not found',e)
 
 # Load data
 url = '''https://github.com/ankitmisk/Heart_Disease_Prediction_ML_Model/blob/main/heart.csv?raw=true'''
