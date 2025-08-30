@@ -32,6 +32,9 @@ st.markdown(data)
 
 st.image('https://cdn.mos.cms.futurecdn.net/dMhEcS6kLzdgWmnYjkCCVT-970-80.jpg.webp')
 
+with open('heart_disease_pred.pkl','rb') as f:
+    chatgpt = pickle.load(f)
+    
 #st.subheader('Checking Error')
 #with open('heart_disease_pred.pkl','rb') as f:
 #   try:
@@ -40,7 +43,7 @@ st.image('https://cdn.mos.cms.futurecdn.net/dMhEcS6kLzdgWmnYjkCCVT-970-80.jpg.we
 #    except Exception as e:
 #        st.write('File not found',e)
 
-Load data
+# Load data
 url = '''https://github.com/ankitmisk/Heart_Disease_Prediction_ML_Model/blob/main/heart.csv?raw=true'''
 df = pd.read_csv(url)
 
@@ -49,7 +52,7 @@ st.sidebar.header('Select Features to Predict Heart Disease')
 st.sidebar.image('https://humanbiomedia.org/animations/circulatory-system/cardiac-cycle/heart-beating.gif')
 
 all_values = []
-
+random.seed(123)
 for i in df.iloc[:,:-1]:
     min_value, max_value = df[i].agg(['min','max'])
 
@@ -60,12 +63,33 @@ for i in df.iloc[:,:-1]:
 
 final_value = [all_values]
 
-ans = chatgpt.predict(final_value)[0]
+ans = chatgpt.predict(final_value)[0] 
+
+import time
+
+progress_bar = st.progress(0)
+placeholder = st.empty()
+placeholder.subheader('Predicting Heart Disease')
+
+place = st.empty()
+place.image('https://i.makeagif.com/media/1-17-2024/dw-jXM.gif',width = 200)
+
+for i in range(100):
+    time.sleep(0.05)
+    progress_bar.progress(i + 1)
 
 if ans == 0:
-    st.success('No Heart Disease')
+    body = f'No Heart Disease Detected'
+    placeholder.empty()
+    place.empty()
+    st.success(body)
+    progress_bar = st.progress(0)
 else:
-    st.warning('Heart Disease Detected')
+    body = 'Heart Disease Found'
+    placeholder.empty()
+    place.empty()
+    st.warning(body)
+    progress_bar = st.progress(0)
 
 st.markdown('Designed by: **Aarshi Pundeer**')
 
